@@ -5,7 +5,8 @@ class UsernameForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: ''
+            username: '',
+            errored: false
         }
 
         this.onChange = this.onChange.bind(this);
@@ -23,8 +24,9 @@ class UsernameForm extends Component {
 
     render() {
         return (            
-            <div className="userform-container">
-                <form onSubmit={this.onSubmit}>
+            <div className="username-container">
+            <h3>Existing Users</h3>  
+                <form className="username-form" onSubmit={this.onSubmit}>
                     <input type="text" placeholder="What is your username?" onChange={this.onChange} />
                     <input type="submit" />
                 </form>

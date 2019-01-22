@@ -1,0 +1,26 @@
+.sendmessageform-container {
+    
+}
+
+
+.sendmessageform-form input[type=text] {
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    text-indent: 10px;
+}
+
+.sendmessageform-form input[type=submit] {    
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    margin-left: 10px;
+    width: 100px;        
+    background-color: navy;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+

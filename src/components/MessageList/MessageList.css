@@ -1,0 +1,8 @@
+.messagelist-container {
+    list-style: none;
+}
+
+.messagelist-container li {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,41 @@
+.chatscreen-container {
+    display: flex;
+    height: 100%;    
+}
+
+.chatscreen-navigation {
+    width: 250px;
+    background-color: rgb(24, 31, 56);
+    color: #ccc;
+    padding-top: 50px;
+    padding-left: 30px;
+}
+
+.chatscreen-navigation ul {
+    list-style: none;
+}
+
+.chatscreen-navigation li {
+    padding-left: 20px;
+}
+
+.chatscreen-navigation h3 {
+    margin-bottom: 10px;
+}
+
+.chatscreen-messages-container {
+    display: flex;
+    flex-direction: column;
+    color: #ccc;
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.chatscreen-messages {
+    flex: 1;
+}
+
+.chatscreen-input {
+    margin: 0 0 50px 10px;
+}

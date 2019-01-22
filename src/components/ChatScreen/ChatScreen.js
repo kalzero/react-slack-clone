@@ -4,6 +4,7 @@ import MessageList from "../MessageList/MessageList";
 import SendMessageForm from "../SendMessageForm/SendMessageForm";
 import TypingIndicator from "../TypingIndicator/TypingIndicator";
 import WhosOnlineList from "../WhosOnlineList/WhosOnlineList";
+import './ChatScreen.css';
 
 class ChatScreen extends Component {
     constructor() {
@@ -19,14 +20,7 @@ class ChatScreen extends Component {
         this.sendTypingEvent = this.sendTypingEvent.bind(this);
     }
 
-    componentWillMount() {
-        console.log('ComponentWillMount', this.props);
-    }
-
-    componentDidMount() {
-        console.log('ComponentDidMount', this.props);
-        //console.log(this.props.currentUsername);
-
+    componentDidMount() {       
         const chatManager = new ChatManager({
             instanceLocator: 'v1:us1:34f7d685-7cbf-42ef-b022-3e8900a5bb8c',
             userId: this.props.currentUsername,
@@ -87,27 +81,19 @@ class ChatScreen extends Component {
 
     render() {
         return (
-            <div style={{
-                    display: 'flex',
-                    height: '100vh'
-                }}>
-                <div style={{
-                    width: '30%',
-                    backgroundColor: 'tomato'
-                }}>
+            <div className="chatscreen-container">
+                <div className="chatscreen-navigation">
+                    <h3>Direct Messages</h3>
                     <WhosOnlineList users={this.state.currentRoom.users} />
                 </div>
-                <div style={{
-                    display: 'flex',
-                    flexDirection: 'column'
-                }}>
-                    <div style={{
-                        flex: '1'
-                    }}>
+                <div className="chatscreen-messages-container">
+                    <div className="chatscreen-messages">
                         <MessageList messages={this.state.messages} />                
-                    </div>                    
-                    <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
-                    <SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+                    </div>     
+                    <div className="chatscreen-input">
+                        <TypingIndicator usersWhoAreTyping={this.state.usersWhoAreTyping} />
+                        <SendMessageForm onSubmit={this.sendMessage} onChange={this.sendTypingEvent} />
+                    </div>               
                 </div>                             
             </div>
         );

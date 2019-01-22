@@ -9,13 +9,17 @@ export default class Login extends Component {
         super()
         this.state = {
           currentScreen: 'WhatIsYourUsernameScreen',
-          currentUsername: ''
+          currentUsername: '',
+          errorData: {
+              message: '',
+              errored: false
+          }
         }
         this.onUsernameSubmitted = this.onUsernameSubmitted.bind(this);
         this.onUsernameCreated = this.onUsernameCreated.bind(this);
-    }
+    }    
 
-    onUsernameCreated(username) {
+    onUsernameCreated(username) {        
         if (username === '') {
             return;
         }
@@ -27,10 +31,23 @@ export default class Login extends Component {
             body: JSON.stringify({username})
         })
         .then(response => {
-            this.setState({currentUsername: username, currentScreen: 'ChatScreen'})
+            if (response.status === 400)            
+            {                
+                this.setState({
+                    errorData: {
+                        ...this.state.errorData,
+                        message: 'User name existed',
+                        errored: true
+                    }
+                });         
+                
+            } else {
+                this.setState({currentUsername: username, currentScreen: 'ChatScreen'});
+            }            
         })
         .catch(error => {
-            console.log(error);
+            
+            //console.log("OnUserNameCreated", error);
         })
     }
 
@@ -56,16 +73,19 @@ export default class Login extends Component {
 
     render() {
         let setForm = '';
-
         if (this.state.currentScreen === 'WhatIsYourUsernameScreen') {
             setForm = (
                 <>  
                     <div className="login-body">
-                        <div className="login-container">
-                            <h3>LOGIN</h3>
+                        <div className="login-header">
+                            <h3>SLACK CLONE LOGIN</h3>
+                        </div>
+                        <div className="login-container">                            
                             <UsernameForm onSubmit={this.onUsernameSubmitted} />
-                            <CreateUserForm onSubmit={this.onUsernameCreated} />
-                        </div>                 
+                            <CreateUserForm 
+                                onSubmit={this.onUsernameCreated}                                 
+                                errorData={this.state.errorData} />                            
+                        </div>                  
                     </div>
                 </>
             );  

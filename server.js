@@ -15,19 +15,20 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/createuser", (req, res) => {
-  const { username } = req.body;    
-  chatkit.createUser({
-    id: username,
-    name: username
-  })
-  .then(() => res.sendStatus(201))
-  .catch(error => {
-    if (error === 'services/chatkit/user_already_exists') {
-      res.sendStatus(200);
-    } else {
-      res.status(error.status).json(error);      
-    }
-  });
+  const { username } = req.body;
+    chatkit.createUser({
+      id: username,
+      name: username
+    })
+    .then(() => res.sendStatus(201))
+    .catch(error => {      
+      if (error === 'services/chatkit/user_already_exists') {
+        res.sendStatus(200);
+      } else {
+        res.status(error.status).json(error);      
+      }
+    });
+  
 });
 
 app.post('/authenticate', (req, res) => {

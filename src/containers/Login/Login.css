@@ -2,20 +2,31 @@ body {
     background-color: rgb(70, 67, 67);
 }
 
-
-
 .login-body {
     top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);    
+    /* box-shadow: 0px 0px 10px 1px rgba(46, 44, 41, 0.75); */
+}
+
+.login-header,
+.login-container {
+    
+}
+
+.login-header {
+    background-color: white;
+    transform: translateY(40%);
+    padding: 15px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .login-container {
     width: 700px;
     height: 400px;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px 1px rgba(46, 44, 41, 0.75);
+    border-radius: 15px;    
     background-color: rgb(24, 31, 56);
     display: flex;
     justify-content: space-between;
